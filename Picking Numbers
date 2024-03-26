@@ -1,0 +1,113 @@
+def pickingNumbers(a):
+    # Write your code here
+    absoluteDifferences = []
+    for number in range(len(a)):
+        absoluteDifferences.append([])
+        for nextNumber in range(len(a)):
+            if (nextNumber > number and abs(a[number] - a[nextNumber]) <= 1):
+                absoluteDifferences[number].append(1)
+            else:
+                absoluteDifferences[number].append(0)
+    # for row in absoluteDifferences:
+    #     print(row)
+        
+    justForShowing = []
+    justForShowing.append(a)
+    for row in absoluteDifferences:
+        justForShowing.append(row)
+    for row in justForShowing:
+        print(row)
+           
+    # The long way
+    # 4 6 5 3 3 1
+    
+    # 6 5 3 3 1
+    
+    # 5 3 3 1
+        
+    #     3 3 1
+    #     5 3 1
+    #     5 3 1
+    #     5 3 3
+        
+    # 6 3 3 1
+    # 6 5 3 1
+    # 6 5 3 1
+    # 6 5 3 3
+    
+    # 4 5 3 3 1
+    
+    #     5 3 3 1
+    #     4 3 3 1
+            
+    #         3 3 1
+    #         4 3 1
+    #         4 3 1
+    #         4 3 3
+    #     4 5 3 1
+    #     4 5 3 1
+    #     4 5 3 3
+            
+            
+    #         5 3 3
+    #         4 3 3
+    #         4 5 3
+    #         4 5 3
+    # 4 6 3 3 1
+    # 4 6 5 3 1
+    # 4 6 5 3 1
+    # 4 6 5 3 3
+    
+    
+    
+    
+    
+    
+    i = 0
+    j = 1
+    subarraySize = len(a)
+    while (i < len(a) and j < len(a)):
+        print("i = ", i, " j = ", j, " [i][j] = ", absoluteDifferences[i][j], " subarraySize = ", subarraySize)
+        if absoluteDifferences[i][j] == 0:
+            subarraySize = subarraySize - 1
+            if (j+1) < len(a) and absoluteDifferences[i][j + 1] == 1 and absoluteDifferences[j][j + 1] == 0:
+                # i = j
+                j = j + 1
+            else:
+                i = j
+                j = j + 1
+            # if (j+1) < len(a) and absoluteDifferences[i][j + 1] == 1:
+            #     # i = j - 1
+            #     j = j + 1
+            # elif (j+1) < len(a) and absoluteDifferences[i][j + 1] == 0:
+            #     # i = i + 1
+            #     i = j - 1
+            #     j = j + 1
+            # elif (j+1) >= len(a):
+            #     break
+        elif absoluteDifferences[i][j] == 1:
+            j = j + 1
+            # elif absoluteDifferences[i][j] == 1:
+                # subarraySize = subarraySize + 1
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                
+                
+                
+                
+                
+    
+    
+    
+    return subarraySize
