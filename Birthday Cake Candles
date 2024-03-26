@@ -1,0 +1,11 @@
+def birthdayCakeCandles(candles):
+    # Write your code here
+    maxHeight = -100000
+    noOfCandlesWithMaxHeight = 0
+    for candle in candles:
+        if (candle > maxHeight):
+            maxHeight = candle
+            noOfCandlesWithMaxHeight = 1
+        elif (candle == maxHeight):
+            noOfCandlesWithMaxHeight = noOfCandlesWithMaxHeight + 1
+    return noOfCandlesWithMaxHeight
