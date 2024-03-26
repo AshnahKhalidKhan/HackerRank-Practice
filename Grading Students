@@ -1,0 +1,15 @@
+def gradingStudents(grades):
+    # Write your code here
+    newGrades = []
+    for oldGrade in grades:
+        if oldGrade < 38 or (oldGrade >= 38 and oldGrade % 5 < 3):
+            newGrades.append(oldGrade)
+        # elif oldGrade % 5 < 2:
+        # 84 % 5 = 4, 85 - 84 = 1, Round up
+        # 83 % 5 = 3, 85 - 83 = 2, Round up
+        # 82 % 5 = 2, 85 - 82 = 3
+        # 81 % 5 = 1, 85 - 81 = 4
+        # 80 % 5 = 0, 85 - 80 = 5
+        else:
+            newGrades.append(oldGrade + 5 - (oldGrade % 5))
+    return newGrades
