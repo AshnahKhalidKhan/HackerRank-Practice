@@ -1,0 +1,18 @@
+def migratoryBirds(arr):
+    # Write your code here
+    hashTable = {}
+    for birds in arr:
+        hashTable[birds] = 0
+    for birds in arr:
+        hashTable[birds] = hashTable[birds] + 1
+    maxSighting = 0
+    maxSightingBird = 0
+    birds = [*hashTable.keys()]
+    sightings = [*hashTable.values()]
+    for index in range(len(hashTable)):
+        if (sightings[index] > maxSighting):
+            maxSighting = sightings[index]
+            maxSightingBird = birds[index]
+        elif (sightings[index] == maxSighting and birds[index] < maxSightingBird):
+            maxSightingBird = birds[index]
+    return maxSightingBird
