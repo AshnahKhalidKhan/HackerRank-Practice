@@ -1,0 +1,8 @@
+def diagonalDifference(arr):
+    # Write your code here
+    sumLeftDiagonal = 0
+    sumRightDiagonal = 0
+    for index in range(len(arr)):
+        sumLeftDiagonal = sumLeftDiagonal + arr[index][index]
+        sumRightDiagonal = sumRightDiagonal + arr[index][len(arr) - 1 - index]
+    return abs(sumLeftDiagonal - sumRightDiagonal)
