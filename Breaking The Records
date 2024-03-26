@@ -1,0 +1,14 @@
+def breakingRecords(scores):
+    # Write your code here
+    minimumScore = scores[0]
+    maximumScore = scores[0]
+    noOfTimesMinimumScoreBroken = 0
+    noOfTimesMaximumScoreBroken = 0
+    for score in scores:
+        if (score < minimumScore):
+            noOfTimesMinimumScoreBroken = noOfTimesMinimumScoreBroken + 1
+            minimumScore = score
+        if (score > maximumScore):
+            noOfTimesMaximumScoreBroken = noOfTimesMaximumScoreBroken + 1
+            maximumScore = score
+    return [noOfTimesMaximumScoreBroken, noOfTimesMinimumScoreBroken]
