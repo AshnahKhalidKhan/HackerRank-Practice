@@ -1,0 +1,21 @@
+public static int beautifulDays(int i, int j, int k) {
+    // Write your code here
+        int noOfBeautifulDays = 0;
+        for (int day = i; day < j + 1; day++)
+        {
+            String originalDay = Integer.toString(day);
+            System.out.println(originalDay);
+            String reverseDay = "";
+            for (int c = 0; c < originalDay.length(); c++)
+            {
+                reverseDay = originalDay.charAt(c) + reverseDay;
+            }
+            System.out.println(reverseDay);
+            int difference = Math.abs(Integer.parseInt(originalDay) - Integer.parseInt(reverseDay));
+            if (difference % k == 0)
+            {
+                noOfBeautifulDays++;
+            }
+        }
+        return noOfBeautifulDays;
+    }
