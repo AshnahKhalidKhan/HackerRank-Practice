@@ -1,5 +1,53 @@
 def pickingNumbers(a):
     # Write your code here
+    min = 0
+    max = 0
+    hashTable = {}
+    for number in a:
+        hashTable[number] = 0
+        if number < min:
+            min = number
+        if number > max:
+            max = number
+    for number in a:
+        hashTable[number] = hashTable[number] + 1
+    print(hashTable)
+    maxSubarray = 0
+    for number in range(min, max + 1):
+        elementsPlusMinusOneOrLess = 0
+        if ((number - 1) in hashTable):
+            elementsPlusMinusOneOrLess = elementsPlusMinusOneOrLess + hashTable[number - 1]
+            print(number - 1, ": ", hashTable[number - 1])
+        else:
+            print(number - 1, ": 0")
+        if (number in hashTable):
+            elementsPlusMinusOneOrLess = elementsPlusMinusOneOrLess + hashTable[number]
+            print(number, ": ", hashTable[number])
+        else:
+            print(number, ": 0")
+        if ((number + 1) in hashTable):
+            elementsPlusMinusOneOrLess = elementsPlusMinusOneOrLess + hashTable[number + 1]
+            print(number + 1, ": ", hashTable[number + 1])
+        else:
+            print(number + 1, ": 0")
+        if (elementsPlusMinusOneOrLess > maxSubarray):
+            maxSubarray = elementsPlusMinusOneOrLess
+            print("maxSubarray: ", maxSubarray)
+        print()
+    # print(hashTable)
+    return maxSubarray
+
+
+
+
+
+
+
+
+
+
+def pickingNumbers(a):
+    # Write your code here
     absoluteDifferences = []
     for number in range(len(a)):
         absoluteDifferences.append([])
