@@ -1,0 +1,88 @@
+def appendAndDelete(s, t, k):
+    # Write your code here
+    # s = "abcd"
+    # t = "abcdert"
+    # k = 10
+    
+    s = "abaa"
+    t = "abaa"
+    k = 7
+    
+    # if (s == t) and (k > len(s)):
+    #     return "Yes"
+        
+        
+        
+    # if (s == "" and k >= len(t)) or (t == "" and k >= len(s)):
+    #     return "Yes"
+    # elif (s == "" and k < len(t)) or (t == "" and k < len(s)):
+    #     return "No"
+    # else:
+    #     index = 0
+    #     s_length = len(s)
+    #     t_length = len(t)
+    #     while (index < s_length and index < t_length):
+    #         if (s[index] == t[index]):
+    #             index = index + 1
+    #         else:
+    #             break
+    #     numberOfDeletes = s_length - index
+    #     numberOfAppends = t_length - index
+    #     print("s: ", s)
+    #     print("t: ", t)
+    #     print("index: ", index)
+    #     print("s_length: ", s_length)
+    #     print("t_length: ", t_length)
+    #     print("numberOfDeletes: ", numberOfDeletes)
+    #     print("numberOfAppends: ", numberOfAppends)
+    #     print("k: ", k)
+    #     if (numberOfDeletes == s_length and numberOfAppends+numberOfDeletes < k):
+    #         return "Yes"
+    #     elif (numberOfDeletes == 0 and numberOfAppends < k):
+    #         return "No"
+    #     # else:
+    #     #     "No"
+        
+    #     if (numberOfDeletes + numberOfAppends) <= k:
+            
+    #         # print(numberOfDeletes == s_length)
+    #         return "Yes"
+    #     else:
+    #         return "No"
+    newString = ""
+    # determine the same same part
+    # determine the extra letters needed to be added
+    # determine empty deletes
+    index = 0
+    s_length = len(s)
+    t_length = len(t)
+    while (index < s_length and index < t_length):
+        if (s[index] == t[index]):
+            index = index + 1
+        else:
+            break
+    noOfDeletes = s_length - index
+    print("s: ", s)
+    print("t: ", t)
+    print("index: ", index)
+    print("s_length: ", s_length)
+    print("t_length: ", t_length)
+    print("noOfDeletes = s_length - index: ", noOfDeletes)
+    # print("numberOfAppends: ", numberOfAppends)
+    print("k: ", k)
+    # Same string hai s == t
+    if (noOfDeletes == 0):
+        if (k == 0) or (k >= 2*len(s)):
+            return "Yes"
+        else:
+            return "No"
+    # Completely diffrent string s = "abc", t = "def"
+    # elif (noOfDeletes == len(s)):
+        
+    # # Kuch kuch diffrent s = "abcd", t = "abcdert"
+    # elif (noOfDeletes == len(s)):
+        
+        
+    # # Another case s = "abcdert", t = "abcd"
+    # elif (noOfDeletes == len(s)):
+    return "Dummy Yes"
