@@ -7,52 +7,6 @@ def appendAndDelete(s, t, k):
     # s = "abaa"
     # t = "abaa"
     # k = 7
-    
-    # if (s == t) and (k > len(s)):
-    #     return "Yes"
-        
-        
-        
-    # if (s == "" and k >= len(t)) or (t == "" and k >= len(s)):
-    #     return "Yes"
-    # elif (s == "" and k < len(t)) or (t == "" and k < len(s)):
-    #     return "No"
-    # else:
-    #     index = 0
-    #     s_length = len(s)
-    #     t_length = len(t)
-    #     while (index < s_length and index < t_length):
-    #         if (s[index] == t[index]):
-    #             index = index + 1
-    #         else:
-    #             break
-    #     numberOfDeletes = s_length - index
-    #     numberOfAppends = t_length - index
-    #     print("s: ", s)
-    #     print("t: ", t)
-    #     print("index: ", index)
-    #     print("s_length: ", s_length)
-    #     print("t_length: ", t_length)
-    #     print("numberOfDeletes: ", numberOfDeletes)
-    #     print("numberOfAppends: ", numberOfAppends)
-    #     print("k: ", k)
-    #     if (numberOfDeletes == s_length and numberOfAppends+numberOfDeletes < k):
-    #         return "Yes"
-    #     elif (numberOfDeletes == 0 and numberOfAppends < k):
-    #         return "No"
-    #     # else:
-    #     #     "No"
-        
-    #     if (numberOfDeletes + numberOfAppends) <= k:
-            
-    #         # print(numberOfDeletes == s_length)
-    #         return "Yes"
-    #     else:
-    #         return "No"
-    newString = ""
-    # determine the same same part
-    # determine the extra letters needed to be added
-    # determine empty deletes
     index = 0
     s_length = len(s)
     t_length = len(t)
@@ -63,58 +17,70 @@ def appendAndDelete(s, t, k):
             break
     noOfDeletes = s_length - index
     noOfAppends = t_length - index
-    print("s: ", s)
-    print("t: ", t)
-    print("index: ", index)
-    print("s_length: ", s_length)
-    print("t_length: ", t_length)
-    print("noOfDeletes = s_length - index: ", noOfDeletes)
-    print("noOfAppends = t_length - index: ", noOfAppends)
-    print("k: ", k)
-    # Same string hai s == t
+    # print("s: ", s)
+    # print("t: ", t)
+    # print("index: ", index)
+    # print("s_length: ", s_length)
+    # print("t_length: ", t_length)
+    # print("noOfDeletes = s_length - index: ", noOfDeletes)
+    # print("noOfAppends = t_length - index: ", noOfAppends)
+    # print("k: ", k)
+    
+    # s = "abcd" t = "abcd", k = 2
+    # s = "abcd" t = "abcd", k = 3
+    # s = "abcd" t = "abcd", k = 5
+    # s = "abcd" t = "abcd", k = 6
+    # s = "abcd" t = "abcd", k = 7
+    # s = "abcd" t = "abcd", k = 8
+    # s = "abcd" t = "abcd", k = 15
+    # s = "", t = "abc"
+    # s = "abc", t = ""
+    # s = "abc", t = "def"
+    # s = "abcd", t = "abcdert"
+    # s = "abcdert", t = "abcd"
+    # s = "abcdg", t = "abcdert"
+    # s = "abcdert", t = "lmno"
+    
+    # s == t
     if (noOfDeletes == 0 and noOfAppends == 0):
-        if (k == 0) or (k >= 2*len(s)):
+        if (k == 0) or (k >= 2*len(s) or (k < len(s) and k % 2 == 0)):
             return "Yes"
         else:
             return "No"
-    # # Kuch kuch diffrent s = "abcd", t = "abcdert"
+    # s = "abcd", t = "abcdert"
     elif (noOfDeletes == 0 and noOfAppends > 0):
         if (k == noOfAppends) or (k >= len(s) + len(t)):
             return "Yes"
         else:
             return "No"
-  
-    
-            
-            
-    # Completely diffrent string s = "abc", t = ""
+    # s = "", t = "abcdert"
+    elif (noOfDeletes == 0 and noOfAppends > 0):
+        if (k == noOfAppends) or (k >= len(s) + len(t)):
+            return "Yes"
+        else:
+            return "No"
+    # s = "abc", t = ""
     elif (noOfDeletes == len(s) and noOfAppends == 0):
         if (k >= noOfDeletes + noOfAppends):
             return "Yes"
         else:
             return "No"
-    # Completely diffrent string s = "abc", t = "def"
+    # s = "abc", t = "def"
     elif (noOfDeletes == len(s) and noOfAppends > 0):
         if (k >= noOfDeletes + noOfAppends):
             return "Yes"
         else:
             return "No"
-            
-    # # # Compleely diffrent part 2 s = "lmno", t = "abcdert"
-    # elif (noOfDeletes == len(s) and len(s) < len(t)):
-    #     noOfAppends = len(t) - len(s)
-    
-        
-        
-    # # Another case s = "abcdert", t = "abcd"
-    elif (noOfDeletes == len(t) and len(s) < len(t)):
-        
-        
-        
-        
-        
-    
-        
-    # # Another case s = "abcdert", t = "lmno"
-    elif (noOfDeletes == len(t) and len(s) < len(t)):
-    return "Dummy Yes"
+    # s = "abcdert", t = "abcd"
+    elif (noOfDeletes > 0 and noOfAppends == 0):
+        if (k == noOfDeletes) or (k >= len(s) + len(t)):
+            return "Yes"
+        else:
+            return "No"
+    # s = "abcdert", t = "abcdg"
+    # s = "abcdert", t = "lmno"
+    elif (noOfDeletes > 0 and noOfAppends > 0):
+        if (k == noOfDeletes + noOfAppends) or (k >= len(s) + len(t)):
+            return "Yes"
+        else:
+            return "No"
