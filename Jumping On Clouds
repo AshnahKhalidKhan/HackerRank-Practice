@@ -1,18 +1,5 @@
 def jumpingOnClouds(c):
     # Write your code here
-    jumps = 0
-    # for i in range(len(c)):
-    #     if (i + 1) < len(c) and c[i + 1] == 0:
-    # c = [0, 1, 0, 0, 0, 1, 0]
-    jumps = 0
-    previous_jump = 0
-    index = 0
-    
-    # c = 0 1 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1 0 1 0 1 0 0 1 0 1 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 0 1 0 0 1 0 1 0
-    
-    
-    
-    
     # 0 0 1 0 0 1 0
     # i = 0, choices = 1
     # i = 1, choices = 3
@@ -21,7 +8,6 @@ def jumpingOnClouds(c):
     # i = 4, choices = 6
     # i = 5, choices = none
     # i = 6, end
-    
     
     # 0 0 0 0 1 0
     # i = 0, choices = 1, 2
@@ -38,35 +24,27 @@ def jumpingOnClouds(c):
     # i = 3, choices = none
     # i = 4, choices = 5
     # i = 5, end
-    
+
+    jumps = 0
     c_length = len(c)
     next_possible_indices = []
     for index in range(c_length):
         next_possible_indices.append([])
         if (c[index] == 0):
-            print("index: ", index)
-            if (index + 1 < c_length and c[index + 1] == 0):
-                print("index + 1: ", index + 1)
-                next_possible_indices[index].append(index + 1)
+            # print("index: ", index)
             if (index + 2 < c_length and c[index + 2] == 0):
-                print("index + 2: ", index + 2)
+                # print("index + 2: ", index + 2)
                 next_possible_indices[index].append(index + 2)
-        print()
-    
-    print(next_possible_indices)
-    
-    
-    # while (index < len(c)):
-    #     if (index + 2) < len(c) and c[index + 2] == 0:
-    #         jumps = jumps + 1
-    #         index = index + 2
-    #         previous_jump = 1
-    #     elif (index + 1) < len(c) and c[index + 1] == 0:
-    #         jumps = jumps + 1
-    #         index = index + 2
-    #         previous_jump = 2
-    #     else:
-    #         break
-    #     # if (index >= len(c)):
-    #     #     index = index - previous_jump
+            elif (index + 1 < c_length and c[index + 1] == 0):
+                # print("index + 1: ", index + 1)
+                next_possible_indices[index].append(index + 1)
+        # print()
+    # print(next_possible_indices)
+    i = 0
+    while (i < c_length):
+        if next_possible_indices[i] != []:
+            jumps = jumps + 1
+            i = next_possible_indices[i][0]
+        else:
+            i = i + 1
     return jumps
