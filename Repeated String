@@ -1,0 +1,22 @@
+def repeatedString(s, n):
+    # Write your code here
+    s_length = len(s)
+    a_until_index = [0] * s_length
+    for index in range(s_length):
+        if index == 0 and s[index] == 'a':
+            a_until_index[index] = 1
+        elif index == 0 and s[index] != 'a':
+            a_until_index[index] = 0
+        elif index != 0 and s[index] == 'a':
+            a_until_index[index] = a_until_index[index - 1] + 1
+        elif index != 0 and s[index] != 'a':
+            a_until_index[index] = a_until_index[index - 1]
+            
+    fullStringRepetitions = math.floor(n / s_length)
+    remainingSubstring = n % s_length
+    
+    total_a = a_until_index[s_length - 1] * fullStringRepetitions
+    if remainingSubstring != 0:
+        total_a = total_a + a_until_index[remainingSubstring - 1]
+        
+    return total_a
