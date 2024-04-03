@@ -1,0 +1,84 @@
+def minimumBribes(q):
+    # Write your code here
+    q_length = len(q)
+    bribesPerPerson = [0] * q_length
+    
+    value_holder = 0
+    index = 0
+    
+    # [0, 1, 2, 3, 4] = index
+    # [1, 2, 3, 4, 5] = index + 1
+    # index = 0
+    # [2, 1, 5, 3, 4] = q
+    # [0, 0, 0, 0, 0] = bribesPerPerson
+    # [0, 1, 0, 0, 0] = bribesPerPerson
+    # [1, 2, 5, 3, 4] = q
+    # index = 0
+    # [1, 2, 5, 3, 4] = q
+    # [0, 1, 0, 0, 0] = bribesPerPerson
+    # index = 1
+    # [1, 2, 5, 3, 4] = q
+    # [0, 1, 0, 0, 0] = bribesPerPerson
+    # index = 2
+    # [1, 2, 5, 3, 4] = q
+    # [0, 1, 0, 0, 0] = bribesPerPerson
+    # [0, 1, 0, 0, 1] = bribesPerPerson
+    # [1, 2, 3, 5, 4] = q
+    # index = 0
+    # [1, 2, 3, 5, 4] = q
+    # [0, 1, 0, 0, 1] = bribesPerPerson
+    # index = 1
+    # [1, 2, 3, 5, 4] = q
+    # [0, 1, 0, 0, 1] = bribesPerPerson
+    # index = 2
+    # [1, 2, 3, 5, 4] = q
+    # [0, 1, 0, 0, 1] = bribesPerPerson
+    # index = 3
+    # [1, 2, 3, 5, 4] = q
+    # [0, 1, 0, 0, 1] = bribesPerPerson
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # [1, 2, 3, 4, 5] = q
+    # index = 0
+    # [1, 2, 3, 4, 5] = q
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # index = 0
+    # [1, 2, 3, 4, 5] = q
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # index = 1
+    # [1, 2, 3, 4, 5] = q
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # index = 2
+    # [1, 2, 3, 4, 5] = q
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # index = 3
+    # [1, 2, 3, 4, 5] = q
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # index = 4
+    # [1, 2, 3, 4, 5] = q
+    # [0, 1, 0, 0, 2] = bribesPerPerson
+    # index = 5
+    
+    last_correct_index = index
+    TooChaotic = False
+    while (index < q_length):
+        if (q[index] != (index + 1)):
+            bribesPerPerson[q[index] - 1] = bribesPerPerson[q[index] - 1] + 1
+            if (bribesPerPerson[q[index] - 1] > 2):
+                # print(bribesPerPerson[q[index] - 1])
+                TooChaotic = True
+                break
+            value_holder = q[index]
+            q[index] = q[index + 1]
+            q[index + 1] = value_holder
+            index = last_correct_index
+        else:
+            last_correct_index = index
+            index = index + 1
+
+    # print(bribesPerPerson)
+    if TooChaotic is True:
+        print("Too chaotic")
+    minimumBribes = 0
+    for bribes in bribesPerPerson:
+        minimumBribes = minimumBribes + bribes
+    # print(minimumBribes)
